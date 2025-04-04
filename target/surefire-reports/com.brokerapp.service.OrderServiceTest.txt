@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.brokerapp.service.OrderServiceTest
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.028 s <<< FAILURE! - in com.brokerapp.service.OrderServiceTest
+createOrder_BuyOrder_ShouldSetTimestampsAndStatus  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: Müşteri bulunamadı: ID=1
+	at com.brokerapp.service.OrderServiceTest.createOrder_BuyOrder_ShouldSetTimestampsAndStatus(OrderServiceTest.java:118)
+
+cancelOrder_WhenBuyOrderCustomerNotFound_ShouldThrowException  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.IllegalStateException to be thrown, but nothing was thrown.
+	at com.brokerapp.service.OrderServiceTest.cancelOrder_WhenBuyOrderCustomerNotFound_ShouldThrowException(OrderServiceTest.java:366)
+
+cancelOrder_WhenSellOrderAssetNotFound_ShouldThrowException  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.IllegalStateException to be thrown, but nothing was thrown.
+	at com.brokerapp.service.OrderServiceTest.cancelOrder_WhenSellOrderAssetNotFound_ShouldThrowException(OrderServiceTest.java:351)
+

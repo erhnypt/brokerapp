@@ -1,0 +1,59 @@
+-------------------------------------------------------------------------------
+Test set: com.brokerapp.service.StockServiceTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 2, Errors: 5, Skipped: 0, Time elapsed: 0.024 s <<< FAILURE! - in com.brokerapp.service.StockServiceTest
+updateStock_WhenStockExistsAndSymbolChangedAndExists_ShouldThrowException  Time elapsed: 0.013 s  <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.brokerapp.service.StockServiceTest.updateStock_WhenStockExistsAndSymbolChangedAndExists_ShouldThrowException(StockServiceTest.java:204)
+  2. -> at com.brokerapp.service.StockServiceTest.updateStock_WhenStockExistsAndSymbolChangedAndExists_ShouldThrowException(StockServiceTest.java:205)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+
+deleteStock_WhenStockDoesNotExist_ShouldThrowException  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.RuntimeException to be thrown, but nothing was thrown.
+	at com.brokerapp.service.StockServiceTest.deleteStock_WhenStockDoesNotExist_ShouldThrowException(StockServiceTest.java:268)
+
+updateStock_WhenStockExistsAndSymbolChangedButNotExists_ShouldUpdateStock  Time elapsed: 0.002 s  <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.brokerapp.service.StockServiceTest.updateStock_WhenStockExistsAndSymbolChangedButNotExists_ShouldUpdateStock(StockServiceTest.java:175)
+  2. -> at com.brokerapp.service.StockServiceTest.updateStock_WhenStockExistsAndSymbolChangedButNotExists_ShouldUpdateStock(StockServiceTest.java:176)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+
+createStock_WhenSymbolDoesNotExist_ShouldCreateStock  Time elapsed: 0.001 s  <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.brokerapp.service.StockServiceTest.createStock_WhenSymbolDoesNotExist_ShouldCreateStock(StockServiceTest.java:61)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+
+updateStock_WhenStockDoesNotExist_ShouldThrowException  Time elapsed: 0.001 s  <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.brokerapp.service.StockServiceTest.updateStock_WhenStockDoesNotExist_ShouldThrowException(StockServiceTest.java:240)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+
+createStock_WhenSymbolExists_ShouldThrowException  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.RuntimeException to be thrown, but nothing was thrown.
+	at com.brokerapp.service.StockServiceTest.createStock_WhenSymbolExists_ShouldThrowException(StockServiceTest.java:103)
+
+updateStock_WhenStockExistsAndSymbolNotChanged_ShouldUpdateStock  Time elapsed: 0.001 s  <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.brokerapp.service.StockServiceTest.updateStock_WhenStockExistsAndSymbolNotChanged_ShouldUpdateStock(StockServiceTest.java:154)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+

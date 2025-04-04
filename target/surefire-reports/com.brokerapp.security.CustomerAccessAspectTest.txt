@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------
+Test set: com.brokerapp.security.CustomerAccessAspectTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.297 s <<< FAILURE! - in com.brokerapp.security.CustomerAccessAspectTest
+adminUserCanAccessAnyCustomer  Time elapsed: 0.286 s  <<< ERROR!
+org.mockito.exceptions.misusing.WrongTypeOfReturnValue: 
+
+$Proxy52 cannot be returned by getMethod()
+getMethod() should return Method
+***
+If you're unsure why you're getting above error read on.
+Due to the nature of the syntax above problem might occur because:
+1. This exception *might* occur in wrongly written multi-threaded tests.
+   Please refer to Mockito FAQ on limitations of concurrency testing.
+2. A spy is stubbed using when(spy.foo()).then() syntax. It is safer to stub spies - 
+   - with doReturn|Throw() family of methods. More in javadocs for Mockito.spy() method.
+
+	at com.brokerapp.security.CustomerAccessAspectTest.setUp(CustomerAccessAspectTest.java:57)
+
+userCannotAccessOtherCustomer  Time elapsed: 0.001 s  <<< ERROR!
+org.mockito.exceptions.misusing.WrongTypeOfReturnValue: 
+
+$Proxy52 cannot be returned by getMethod()
+getMethod() should return Method
+***
+If you're unsure why you're getting above error read on.
+Due to the nature of the syntax above problem might occur because:
+1. This exception *might* occur in wrongly written multi-threaded tests.
+   Please refer to Mockito FAQ on limitations of concurrency testing.
+2. A spy is stubbed using when(spy.foo()).then() syntax. It is safer to stub spies - 
+   - with doReturn|Throw() family of methods. More in javadocs for Mockito.spy() method.
+
+	at com.brokerapp.security.CustomerAccessAspectTest.setUp(CustomerAccessAspectTest.java:57)
+
+userCanAccessOnlyOwnCustomer  Time elapsed: 0.001 s  <<< ERROR!
+org.mockito.exceptions.misusing.WrongTypeOfReturnValue: 
+
+$Proxy52 cannot be returned by getMethod()
+getMethod() should return Method
+***
+If you're unsure why you're getting above error read on.
+Due to the nature of the syntax above problem might occur because:
+1. This exception *might* occur in wrongly written multi-threaded tests.
+   Please refer to Mockito FAQ on limitations of concurrency testing.
+2. A spy is stubbed using when(spy.foo()).then() syntax. It is safer to stub spies - 
+   - with doReturn|Throw() family of methods. More in javadocs for Mockito.spy() method.
+
+	at com.brokerapp.security.CustomerAccessAspectTest.setUp(CustomerAccessAspectTest.java:57)
+
