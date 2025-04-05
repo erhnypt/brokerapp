@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.brokerapp.service.AssetServiceTest
--------------------------------------------------------------------------------
-Tests run: 15, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.02 s <<< FAILURE! - in com.brokerapp.service.AssetServiceTest
-updateAsset_ShouldUpdateTimestamp  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.IllegalArgumentException: Güncellenecek varlık bulunamadı: ID=1
-	at com.brokerapp.service.AssetServiceTest.updateAsset_ShouldUpdateTimestamp(AssetServiceTest.java:172)
-

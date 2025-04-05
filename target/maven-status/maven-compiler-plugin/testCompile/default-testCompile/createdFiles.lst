@@ -1,11 +1,7 @@
-com/brokerapp/security/CustomerAccessAspectTest$TestController.class
+com/brokerapp/controller/AuthControllerTest.class
+com/brokerapp/security/jwt/JwtUtilsTest.class
 com/brokerapp/service/UserServiceTest.class
 com/brokerapp/service/AssetServiceTest.class
-com/brokerapp/controller/UserControllerTest.class
-com/brokerapp/controller/AuthControllerTest.class
-com/brokerapp/service/StockServiceTest.class
-com/brokerapp/service/AuthServiceTest.class
-com/brokerapp/controller/OrderControllerTest.class
 com/brokerapp/service/CustomerServiceTest.class
-com/brokerapp/service/OrderServiceTest.class
-com/brokerapp/security/CustomerAccessAspectTest.class
+com/brokerapp/controller/CustomerControllerTest.class
+com/brokerapp/controller/AdminControllerTest.class
