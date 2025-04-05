@@ -1,287 +1,88 @@
 # Broker Application User Guide
 
-This document provides detailed instructions on how to use the Broker Application API for managing customers, assets, and orders.
+This is a Java Spring Boot application.
+
+## Getting Started
+
+Run the following commands in your terminal:
+```
+mvn clean install
+mvn spring-boot:run
+```
+
+## Important Notes
+
+- All tests can be performed using the Swagger UI interface
+- You can view data in the H2 database
+- Due to the use of H2 database, all data will be lost when the application is shut down
 
 ## Authentication
 
-### Login
-```
-POST /api/auth/login
-```
-
-**Request Body:**
+Admin login credentials are available in the application.properties file:
 ```json
 {
-  "username": "your_username",
-  "password": "your_password"
+  "username": "admin",
+  "password": "admin123"
 }
 ```
 
-**Response:**
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "username": "your_username",
-  "role": "USER"
-}
-```
+To authenticate:
+1. Navigate to `POST /api/alt-auth/admin-login` endpoint in Swagger UI
+2. Enter the credentials above in the request body
+3. Click the "Execute" button
+4. You will receive a 200 success response
+5. Copy the token from the response body
+6. Click the "Authorize" button in the top-right corner of the Swagger UI
+7. Enter the token as "Bearer + token" (note: there must be a space between "Bearer" and the token)
+8. Click "Authorize" to apply the authentication
 
-Use the returned token in the Authorization header for subsequent requests:
-```
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-```
+## Admin Privileges
 
-### `Default Admin Credentials`
-The system comes with a default administrator account:
-```
-Username: admin
-Password: admin123
-```
-You can use these credentials to log in with administrative privileges to access all endpoints.
+After successful login, administrators have the following privileges:
 
-## Swagger UI Documentation
+1. User creation
+2. Customer creation
+3. Asset creation
 
-The Broker Application provides a Swagger UI interface for easy API exploration and testing. To use Swagger UI:
+### Admin Endpoints
 
-1. Start the application
-2. Navigate to http://localhost:8080/swagger-ui/ in your browser
-3. The interface displays all available API endpoints grouped by controller
-4. Click on any endpoint to expand its details
-5. For authenticated endpoints:
-   - Click the "Authorize" button at the top
-   - Enter your JWT token as `Bearer your-token-here`
-   - Click "Authorize" to apply authentication
-6. Test endpoints directly from the UI by:
-   - Entering required parameters
-   - Clicking "Execute"
-   - Viewing the response
+- `POST /api/admin/users` - Create new users
+- `POST /api/admin/customers` - Create new customers
+- `POST /api/admin/assets` - Create new assets
+- `GET /api/admin/users` - List all users
+- `GET /api/admin/customers` - List all customers
+- `GET /api/admin/assets` - List all assets
 
-Swagger UI is the recommended way to explore and test the API as it provides detailed documentation for each endpoint, including parameter requirements and response formats.
+## Asset Purchasing
 
-## Customer Management
+Assets can be purchased in two ways:
 
-### List All Customers (Admin Only)
-```
-GET /api/customers
-```
+1. **Admin Purchase**: When logged in as an admin, you can purchase assets on behalf of any customer
+2. **Customer Purchase**: Customers can log in and purchase assets directly
 
-### Get Customer by ID
-```
-GET /api/customers/{id}
-```
-Note: Regular users can only access their own customer record.
+Both admin and customer users can perform asset purchase operations using the appropriate endpoints in Swagger UI.
 
-### Create New Customer
-```
-POST /api/customers
-```
+## Order Operations
 
-**Request Body:**
-```json
-{
-  "name": "Customer Name",
-  "email": "customer@example.com",
-  "phone": "+901234567890"
-}
-```
+To manage orders, you can use the Order Controller endpoints:
 
-### Update Customer
-```
-PUT /api/customers/{id}
-```
+- `GET /api/orders` - View all orders
+- `GET /api/orders/customer/{customerId}/status/{status}` - Filter orders by customer ID and status
 
-**Request Body:**
-```json
-{
-  "name": "Updated Name",
-  "email": "updated@example.com",
-  "phone": "+901234567890"
-}
-```
+### Admin Order Management
 
-### Delete Customer
-```
-DELETE /api/customers/{id}
-```
+Administrators can manage the entire order process and have permissions to:
+- Match pending orders
+- Cancel pending orders
+- View order status for any customer
 
-## Asset Management
+### Customer Order Placement
 
-### List Assets for a Customer
-```
-GET /api/assets/customer/{customerId}
-```
-Retrieves all assets owned by a specific customer.
+If you want a customer to place orders directly:
 
-### Get Asset by ID
-```
-GET /api/assets/{id}
-```
-
-### Create Asset
-```
-POST /api/assets
-```
-
-**Request Body:**
-```json
-{
-  "customerId": 1,
-  "stockId": 1,
-  "amount": 10.5
-}
-```
-
-## Stock Management (Admin Only)
-
-### List All Stocks
-```
-GET /api/stocks
-```
-
-### Get Stock by ID
-```
-GET /api/stocks/{id}
-```
-
-### Get Stock by Name
-```
-GET /api/stocks/name/{name}
-```
-
-### Create New Stock
-```
-POST /api/stocks
-```
-
-**Request Body:**
-```json
-{
-  "name": "STOCKTRY",
-  "price": 100.50,
-  "amount": 1000
-}
-```
-Note: Stock names must end with "TRY" indicating Turkish Lira.
-
-### Update Stock
-```
-PUT /api/stocks/{id}
-```
-
-**Request Body:**
-```json
-{
-  "name": "STOCKTRY",
-  "price": 105.75,
-  "amount": 1200
-}
-```
-
-### Update Stock Price
-```
-PUT /api/stocks/{id}/price
-```
-
-**Request Body:**
-```json
-{
-  "price": 110.25
-}
-```
-
-### Increase Stock Amount
-```
-PUT /api/stocks/{id}/amount
-```
-
-**Request Body:**
-```json
-{
-  "amount": 500
-}
-```
-
-### Delete Stock
-```
-DELETE /api/stocks/{id}
-```
-
-## Order Management
-
-### List Orders for a Customer
-```
-GET /api/orders/customer/{customerId}
-```
-Retrieves all orders created by a specific customer.
-
-### Get Order by ID
-```
-GET /api/orders/{id}
-```
-
-### Create New Buy Order
-```
-POST /api/orders/buy
-```
-
-**Request Body:**
-```json
-{
-  "customerId": 1,
-  "stockId": 1,
-  "price": 100.00,
-  "amount": 5.0
-}
-```
-
-### Create New Sell Order
-```
-POST /api/orders/sell
-```
-
-**Request Body:**
-```json
-{
-  "customerId": 1,
-  "stockId": 1,
-  "price": 105.00,
-  "amount": 3.0
-}
-```
-
-### Cancel Order
-```
-DELETE /api/orders/{id}
-```
-
-## Error Handling
-
-All API endpoints return standard HTTP status codes:
-- 200: Success
-- 201: Created
-- 400: Bad Request
-- 401: Unauthorized
-- 403: Forbidden
-- 404: Not Found
-- 500: Internal Server Error
-
-Error responses include details about what went wrong:
-```json
-{
-  "timestamp": "2023-06-15T10:15:30.123Z",
-  "status": 400,
-  "error": "Bad Request",
-  "message": "Validation failed",
-  "path": "/api/orders/buy"
-}
-```
-
-## Notes on Order Processing
-
-1. When creating buy or sell orders, the system automatically attempts to match them with existing orders.
-2. Matched orders are executed immediately and assets are updated accordingly.
-3. Partially matched orders remain active for the unmatched portion.
-4. Orders are matched based on price and time priority.
-5. You can check the status of your orders using the list orders endpoint.
-
-For any additional assistance, please contact support@brokerapp.com. 
+1. Log out from admin account
+2. Navigate to `POST /api/auth/customer-login` endpoint
+3. Enter the customer's username and password
+4. Obtain the authorization token
+5. Apply the authorization as described in the Authentication section
+6. The customer can now place orders directly 
